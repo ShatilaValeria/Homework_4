@@ -1,9 +1,13 @@
+package DB.operationRequest;
+
+import connection.ConnectionSQL;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class OperationMenu {
+public class AccountOperation implements OperationRequest {
 
     public void requestForReplenishment(int accountId, String name, double money) {
         Connection connection = new ConnectionSQL().connection();

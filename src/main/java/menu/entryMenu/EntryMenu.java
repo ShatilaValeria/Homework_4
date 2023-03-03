@@ -1,3 +1,5 @@
+package menu.entryMenu;
+
 public interface EntryMenu {
 
     void startMenu();

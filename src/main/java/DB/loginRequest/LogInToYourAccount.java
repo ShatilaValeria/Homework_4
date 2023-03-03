@@ -1,22 +1,28 @@
+package DB.loginRequest;
+
+import connection.ConnectionSQL;
+import menu.operationMenu.AccountActionsMenu;
+import menu.entryMenu.StartMenu;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Account {
-    Menu menu = new Menu();
+public class LogInToYourAccount implements LoginRequest{
+    StartMenu menu = new StartMenu();
 
     private final String name;
     private String address;
     private String currencyMoney;
 
-    public Account(String name, String address, String currencyMoney) {
+    public LogInToYourAccount(String name, String address, String currencyMoney) {
         this.name = name;
         this.address = address;
         this.currencyMoney = currencyMoney;
     }
 
-    public Account(String name) {
+    public LogInToYourAccount(String name) {
         this.name = name;
     }
 
@@ -53,7 +59,7 @@ public class Account {
                     statement.executeUpdate("INSERT INTO Transactions(accountId, amount)" +
                             "VALUES (" +
                             "(SELECT accountId FROM Accounts WHERE  accountId='" + accountId + "') ,'" + 0 + "');");
-                    AccountActions accountActions = new AccountActions(accountId, getName(), getCurrencyMoney());
+                    AccountActionsMenu accountActions = new AccountActionsMenu(accountId, getName(), getCurrencyMoney());
                     statement.close();
                     connection.close();
                     accountActions.mainMenu();
@@ -78,7 +84,7 @@ public class Account {
                 String currency = resultSet.getString("currency");
                 System.out.println(getName() + " вы успешно вошли в свой аккаунт");
                 System.out.println(currency + " валюта, которая хранится на данном аккаунте");
-                AccountActions accountActions = new AccountActions(accountId, getName(), currency);
+                AccountActionsMenu accountActions = new AccountActionsMenu(accountId, getName(), currency);
                 statement.close();
                 connection.close();
                 accountActions.mainMenu();

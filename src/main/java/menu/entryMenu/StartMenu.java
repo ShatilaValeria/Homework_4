@@ -1,7 +1,11 @@
+package menu.entryMenu;
+
+import DB.loginRequest.LogInToYourAccount;
+
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Menu implements EntryMenu {
+public class StartMenu implements EntryMenu {
 
     Scanner scanner = new Scanner(System.in);
 
@@ -46,13 +50,13 @@ public class Menu implements EntryMenu {
                 case 1 -> {
                     String address = address();
                     String currency = currencyMoneyMenu();
-                    Account account = new Account(nameToLowerCase, address, currency);
+                    LogInToYourAccount account = new LogInToYourAccount(nameToLowerCase, address, currency);
                     account.registrationRequest();
                     return;
                 }
                 case 2 -> {
                     String currency = currencyMoneyMenu();
-                    Account account = new Account(nameToLowerCase, null, currency);
+                    LogInToYourAccount account = new LogInToYourAccount(nameToLowerCase, null, currency);
                     account.registrationRequest();
                     return;
                 }
@@ -71,7 +75,7 @@ public class Menu implements EntryMenu {
         System.out.print("Введите ваше имя:");
         String name = scanner.next();
         String nameToLowerCase = name.toLowerCase(Locale.ROOT);
-        Account account = new Account(nameToLowerCase);
+        LogInToYourAccount account = new LogInToYourAccount(nameToLowerCase);
         account.userVerificationRequest();
     }
 

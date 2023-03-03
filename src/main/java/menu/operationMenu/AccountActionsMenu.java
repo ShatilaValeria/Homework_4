@@ -1,14 +1,18 @@
+package menu.operationMenu;
+
+import DB.operationRequest.AccountOperation;
+
 import java.util.Scanner;
 
-public class AccountActions {
+public class AccountActionsMenu implements menu.operationMenu.OperationMenu {
     Scanner scanner = new Scanner(System.in);
-    OperationMenu operationMenu = new OperationMenu();
+    AccountOperation operationMenu = new AccountOperation();
 
     private final String name;
     private final int accountId;
     private final String currency;
 
-    public AccountActions(int accountId, String name, String currency) {
+    public AccountActionsMenu(int accountId, String name, String currency) {
         this.accountId = accountId;
         this.name = name;
         this.currency = currency;
