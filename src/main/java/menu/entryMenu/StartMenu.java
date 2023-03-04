@@ -80,11 +80,19 @@ public class StartMenu implements EntryMenu {
     }
 
     public String address() {
+        int isNumInt;
         System.out.print("Введите вашу улицу: ");
         String street = scanner.next();
         System.out.print("Введите номер вашего дома: ");
         String numHome = scanner.next();
-        String address = "ул. " + street + " д. " + numHome;
+        try {
+            isNumInt= Integer.parseInt(numHome);
+        } catch (NumberFormatException e) {
+            System.out.println("Некорректный ввод данных. Перезапустите программу и попробуйте снова!");
+            throw new NumberFormatException("Некорректный ввод данных");
+        }
+        String address = "ул. " + street + " д. " + isNumInt;
+        System.out.println(address);
         return address.toLowerCase(Locale.ROOT);
     }
 
